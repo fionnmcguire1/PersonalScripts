@@ -15,26 +15,72 @@ require_once('../github-php-client-master/client/GitHubClient.php');
 {
   echo "$value\n";
 }*/
-if($argv[1] == "help" || $argv[1] == "h" || $argv[1] == "H")
-{
-  print "***  Welcome to Gitstats CL Admin Client  ***\n\n
+print "***  Welcome to Gitstats CL Admin Client  ***\n\n
 Gitstats is a very simple script used to get information about\n
-your github account and individual github repositories\n\n
-| Name | Usage                  |    Description                         |\n
-| cred | cred username password | Used to establish your git credentials |\n";
-}
-else if($argv[1] == "cred")
+your github account and individual github repositories\n\n";
+$uname = readline("Enter Username: ");
+$pass = readline("Enter Password: ");
+$client = new GitHubClient();
+$client->setCredentials($uname, $pass);
+
+$response = true;
+while($response != false)
 {
-  $client = new GitHubClient();
-  $client->setCredentials($argv[2], $argv[3]);
-}
-else if($argv[1] == "c")
-{
-  $client = new GitHubClient();
-  $client->setCredentials("****", "*****");
-  $commits = $client->repos->commits->listCommitsOnRepository($argv[2], $argv[3]);
-  echo "Count: " . count($commits) . "\n";
+  $command = readline("Enter Command: ");
+  /*if(substr($command, 0, 6) == 'rstats')
+  {
+    if(count($command) > 7)
+    {
+      $repo = substr($command, 6);
+      $repo = trim($repo);
+
+      $commits = $client->repos->commits->listCommitsOnRepository($uname, $repo);
+      echo "Commit Count: " . count($commits) . "\n";
+    }
+    else
+    {
+      $allInfo = $client->repos->listRepositories();
+      echo json_encode($allInfo["42"]);
+    }*/
+    if(substr($command, 0, 6) == 'rstats')
+    {
+      $allData = json_decode(get_json("/users/$uname/repos",$uname), true);
+      $i = 0;
+      while($i < count($allData))
+      {
+        echo "------> ".$allData[$i]['name']."\n";
+        $i+=1;
+      }
+
+    /*$allInfo = $client->repos->listRepositories();
+    print(count($allInfo));
+    //print_r($allInfo);
+    foreach($allInfo as $value)
+    {
+      echo "------>$value\n";
+    }*/
+
+  }
+  else if($command == 'q' || $command == 'Q' || $command == 'quit')
+  {
+    $response = false;
+  }
 }
 
+function get_json($url,$uname){
+  $base = "https://api.github.com";
+  $curl = curl_init();
+  curl_setopt($curl, CURLOPT_URL, $base . $url);
+  curl_setopt($curl, CURLOPT_USERAGENT, $uname);
+  curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+  curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    //curl_setopt($curl, CONNECTTIMEOUT, 1);
+  $content = curl_exec($curl);
+  echo $http_status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+  curl_close($curl);
+
+  return $content;
+}
 
 ?>
