@@ -7,16 +7,27 @@ Description:
 
 
 */
-$ch = curl_init();
 
-// set URL and other appropriate options
-curl_setopt($ch, CURLOPT_URL, "https://github.com/fionnmcguire1/College-Programming");
-curl_setopt($ch, CURLOPT_HEADER, 0);
 
-// grab URL and pass it to the browser
-curl_exec($ch);
+require_once('../github-php-client-master/client/GitHubClient.php');
 
-// close cURL resource, and free up system resources
-curl_close($ch);
+/*foreach($argv as $value)
+{
+  echo "$value\n";
+}*/
+if($argv[1] == "help" || $argv[1] == "h" || $argv[1] == "H")
+{
+  print "***  Welcome to Gitstats CL Admin Client  ***\n\n
+Gitstats is a very simple script used to get information about\n
+your github account and individual github repositories\n\n
+| Name | Usage                  |    Description                         |\n
+| cred | cred username password | Used to establish your git credentials |\n";
+}
+else if($argv[1] == "cred")
+{
+  $client = new GitHubClient();
+  $client->setCredentials($argv[2], $argv[3]);
+}
+
 
 ?>
