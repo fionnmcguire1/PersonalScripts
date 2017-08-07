@@ -28,6 +28,13 @@ else if($argv[1] == "cred")
   $client = new GitHubClient();
   $client->setCredentials($argv[2], $argv[3]);
 }
+else if($argv[1] == "c")
+{
+  $client = new GitHubClient();
+  $client->setCredentials("****", "*****");
+  $commits = $client->repos->commits->listCommitsOnRepository($argv[2], $argv[3]);
+  echo "Count: " . count($commits) . "\n";
+}
 
 
 ?>
