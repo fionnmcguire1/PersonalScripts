@@ -78,13 +78,14 @@ while($response != false)
       {
         $OpenIssuesData = json_decode(get_json($allData[$i]['issue_events_url'],$uname,true), true);
         $j = 0;
-        while($j < count($OpenIssuesData))
+        /*while($j < count($OpenIssuesData))
         {
-          print "-----> Title: ".$OpenIssuesData[$j]['title']."\n";
-          print "-----> Body: ".$OpenIssuesData[$j]['body']."\n";
+          //print_r($OpenIssuesData);
+          //print "-----> Title: ".$OpenIssuesData."\n";
+          //print "-----> Body: ".$OpenIssuesData[0]['body']."\n";
           print "";
           $j+=1;
-        }
+        }*/
       }
       $i+=1;
     }
