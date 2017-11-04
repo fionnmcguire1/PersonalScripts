@@ -40,6 +40,8 @@ alias showfiles="sh /Users/FionnMcguire/Software\ Development/PersonalScripts/ba
 alias numFiles='echo $(ls -1 | wc -l)'
 alias apacheRestart='sudo apachectl graceful'
 alias gc="sh /Users/FionnMcguire/Software\ Development/PersonalScripts/bashAliasCommands.sh gc $1"
+alias ls="ls-l"
+
 
 #----------------------------------------------------#
 #----------------------------------------------------#
