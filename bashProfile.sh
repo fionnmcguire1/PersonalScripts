@@ -35,15 +35,11 @@ export LSCOLORS=CxFxGxDxBxegedabagaced
 
 alias python=python3
 alias shutdown="shutdown -f -t 300"
-alias hidefiles="defaults write com.apple.finder AppleShowAllFiles -bool TRUE
-killall Finder"
-alias showfiles="defaults write com.apple.finder AppleShowAllFiles -bool FALSE
-killall Finder"
+alias hidefiles="sh /Users/FionnMcguire/Software\ Development/PersonalScripts/bashAliasCommands.sh hidefiles"
+alias showfiles="sh /Users/FionnMcguire/Software\ Development/PersonalScripts/bashAliasCommands.sh showfiles"
 alias numFiles='echo $(ls -1 | wc -l)'
 alias apacheRestart='sudo apachectl graceful'
 
 #----------------------------------------------------#
 #----------------------------------------------------#
 #----------------------------------------------------#
-
-
