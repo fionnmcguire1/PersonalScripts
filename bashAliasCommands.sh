@@ -30,9 +30,9 @@ then
 		#This is basically to stop infinite loops
 		if [ $counter >= 3 ]
 		then
-			echo "This alias doesn't allow for commits on 3 or more nested folders\n 
-			Use: user$ git add -A\n
-			user$ git commit -m \"Message for commit! \""
+			echo "This alias doesn't allow for commits on 3 or more nested folders
+			Use: user$ git add -A
+			user$ git commit -m \"Message for commit! \"\n\n"
 			break
 		fi
 	done
