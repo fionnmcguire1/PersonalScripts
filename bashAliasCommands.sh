@@ -19,7 +19,7 @@ then
 		then
 			git add -A
 			git commit -m "$2"
-			cd $currentPath
+			cd "$currentPath/"
 			break
 		else
 			$counter = $counter+1
