@@ -11,8 +11,8 @@ then
 	killall Finder
 elif [ $1 == "gc" ]
 then
-	$counter = 0
-	$currentPath = pwd
+	counter=0
+	currentPath=pwd
 	while [ 1 ]
 	do	
 		if [ -d .git ]
