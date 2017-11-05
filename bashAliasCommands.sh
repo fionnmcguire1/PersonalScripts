@@ -12,14 +12,14 @@ then
 elif [ $1 == "gc" ]
 then
 	counter=0
-	currentPath=pwd
+	currentPath=$(pwd)
 	while [ 1 ]
 	do	
 		if [ -d .git ]
 		then
 			git add -A
 			git commit -m "$2"
-			cd "$currentPath/"
+			cd "$currentPath"
 			break
 		else
 			$counter = $counter+1
