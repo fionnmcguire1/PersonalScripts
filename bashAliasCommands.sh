@@ -36,5 +36,9 @@ then
 			break
 		fi
 	done
+elif [ $1 == "c" ]
+then
+	clear
+
 fi
 
