@@ -44,6 +44,7 @@ alias ls="ls -l"
 alias LL="cd /Users/FionnMcguire/Software\ Development/LanguageLearning"
 alias c="clear"
 alias cb="cp -i $HOME/.bash_profile /Users/FionnMcguire/Software\ Development/PersonalScripts"
+alias cv="cp -i $HOME/.vimrc /Users/FionnMcguire/Software\ Development/PersonalScripts"
 
 #----------------------------------------------------#
 #----------------------------------------------------#
